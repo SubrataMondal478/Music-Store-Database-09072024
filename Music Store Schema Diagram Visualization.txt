@@ -1,0 +1,93 @@
+Creating a clear schema diagram for the Music Store database involves showing the tables and their relationships. Here’s a textual representation of the schema, followed by a description you can use to visualize the diagram.
+
+Schema Diagram Description
+Tables and Relationships
+Artists
+
+ArtistID (Primary Key)
+Name
+Country
+Albums
+
+AlbumID (Primary Key)
+Title
+ArtistID (Foreign Key to Artists)
+ReleaseDate
+Genres
+
+GenreID (Primary Key)
+GenreName
+Tracks
+
+TrackID (Primary Key)
+Title
+AlbumID (Foreign Key to Albums)
+GenreID (Foreign Key to Genres)
+Length
+Customers
+
+CustomerID (Primary Key)
+FirstName
+LastName
+Email
+PhoneNumber
+Orders
+
+OrderID (Primary Key)
+CustomerID (Foreign Key to Customers)
+OrderDate
+OrderDetails
+
+OrderDetailID (Primary Key)
+OrderID (Foreign Key to Orders)
+TrackID (Foreign Key to Tracks)
+Quantity
+Price
+Playlists
+
+PlaylistID (Primary Key)
+Name
+CustomerID (Foreign Key to Customers)
+PlaylistTracks
+
+PlaylistTrackID (Primary Key)
+PlaylistID (Foreign Key to Playlists)
+TrackID (Foreign Key to Tracks)
+Suppliers
+
+SupplierID (Primary Key)
+Name
+ContactName
+ContactEmail
+Inventory
+
+InventoryID (Primary Key)
+AlbumID (Foreign Key to Albums)
+SupplierID (Foreign Key to Suppliers)
+Quantity
+Schema Diagram Visualization
+To visualize this schema, imagine the following:
+
+Artists has a one-to-many relationship with Albums.
+Albums has a one-to-many relationship with Tracks.
+Genres has a one-to-many relationship with Tracks.
+Customers has a one-to-many relationship with Orders.
+Orders has a one-to-many relationship with OrderDetails.
+Tracks has a one-to-many relationship with OrderDetails.
+Customers has a one-to-many relationship with Playlists.
+Playlists has a one-to-many relationship with PlaylistTracks.
+Tracks has a one-to-many relationship with PlaylistTracks.
+Suppliers has a one-to-many relationship with Inventory.
+Albums has a one-to-many relationship with Inventory.
+
+Artists (ArtistID) --< Albums (AlbumID, ArtistID)
+Genres (GenreID) --< Tracks (TrackID, AlbumID, GenreID)
+Albums (AlbumID) --< Tracks (TrackID, AlbumID)
+Customers (CustomerID) --< Orders (OrderID, CustomerID)
+Orders (OrderID) --< OrderDetails (OrderDetailID, OrderID, TrackID)
+Tracks (TrackID) --< OrderDetails (OrderDetailID, TrackID)
+Customers (CustomerID) --< Playlists (PlaylistID, CustomerID)
+Playlists (PlaylistID) --< PlaylistTracks (PlaylistTrackID, PlaylistID, TrackID)
+Tracks (TrackID) --< PlaylistTracks (PlaylistTrackID, TrackID)
+Suppliers (SupplierID) --< Inventory (InventoryID, AlbumID, SupplierID)
+Albums (AlbumID) --< Inventory (InventoryID, AlbumID)
